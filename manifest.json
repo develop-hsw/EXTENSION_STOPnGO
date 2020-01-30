@@ -1,84 +1,40 @@
 {
-    // 필수
     "manifest_version": 2,
     "name": "STOP n GO",
-    "version": "versionString",
-  
-    // 추천
+    "version": "1.0.0",
+
     "default_locale": "ko",
     "description": "웨일 브라우저를 위한 스탑워치.",
-    "icons": {.png},
+    "icons": {"16": "png/stopngoXhsw16.png", "128": "png/stopngoXhsw128.png"},
   
-    // 셋 중 하나만 설정할 수 있음
-    "sidebar_action": {...},
+    "sidebar_action": {
+      "default_page" : "index.html",
+      "default_icon" : {
+        "16" : "png/stopngoXhsw16.png"
+      },
+      "default_title" : "STOP n GO"
+    },
   
-    // 선택
-    "action": ...,
-    "author": ...,
-    "automation": ...,
+    "author": "hsw",
     "background": {
-      // 추천
+      "scripts" : ["js/stopwatch.js", "js/currentTime.js"],
       "persistent": false
     },
-    "background_page": ...,
-    "chrome_settings_overrides": {...},
+
     "chrome_ui_overrides": {
       "bookmarks_ui": {
         "remove_bookmark_shortcut": true,
         "remove_button": true
       }
     },
-    "chrome_url_overrides": {...},
-    "commands": {...},
-    "content_capabilities": ...,
-    "content_scripts": [{...}],
-    "content_security_policy": "policyString",
-    "converted_from_user_script": ...,
-    "current_locale": ...,
-    "declarative_net_request": ...,
-    "devtools_page": "devtools.html",
-    "event_rules": [{...}],
-    "externally_connectable": {
-      "matches": ["*://*.example.com/*"]
-    },
-    "file_browser_handlers": [...],
-    "file_system_provider_capabilities": {
-      "configurable": true,
-      "multiple_mounts": true,
-      "source": "network"
-    },
-    "homepage_url": "http://path/to/homepage",
-    "import": [{"id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}],
-    "incognito": "spanning, split, or not_allowed",
-    "input_components": ...,
-    "key": "publicKey",
-    "minimum_chrome_version": "versionString",
-    "nacl_modules": [...],
-    "oauth2": ...,
-    "offline_enabled": true,
-    "omnibox": {
-      "keyword": "aString"
-    },
-    "optional_permissions": ["tabs"],
-    "options_page": "options.html",
-    "options_ui": {
-      "chrome_style": true,
-      "page": "options.html"
-    },
-    "permissions": ["tabs"],
-    "platforms": ...,
-    "requirements": {...},
-    "sandbox": [...],
-    "short_name": "Short Name",
-    "signature": ...,
-    "spellcheck": ...,
-    "storage": {
-      "managed_schema": "schema.json"
-    },
-    "system_indicator": ...,
-    "tts_engine": {...},
-    "update_url": "https://path/to/updateInfo.xml",
-    "version_name": "aString",
-    "web_accessible_resources": [...]
+    "commands": {
+      "_execute_page_action" : {
+        "suggested_key" : {
+          "default_key" : "Ctrl+Shift+C",
+          "windows" : "Ctrl+Shift+C",
+          "mac" : "Command+Shift+C"
+        }
+      }
+    }
   }
   

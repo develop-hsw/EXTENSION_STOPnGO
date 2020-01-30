@@ -6,56 +6,68 @@ let min;
 let sec;
 let millisec;
 
-let startFlag = 0;
+let stopCount = 0;
 
 let startBtn = document.getElementById("startButton");
 let stopBtn = document.getElementById("pauseButton");
 let clearBtn = document.getElementById("clearButton");
 
-startBtn.addEventListener("click", function () {
+let startState = startBtn.addEventListener("click", function () {
+    if (startState !== 1) {
+        if (!startTime) {
+            startTime = Date.now();
+        } else {
+            startTime += (Date.now() - stopTime);
+        }
 
-    if (!startTime) {
-        startTime = Date.now();
-    } else {
-        startTime += (Date.now() - stopTime);
+        timeStart = setInterval(function () {
+            let currentTime = new Date(Date.now() - startTime);
+
+            min = addZero(currentTime.getMinutes());
+            sec = addZero(currentTime.getSeconds());
+            millisec = addZero(Math.floor(currentTime.getMilliseconds() / 10));
+
+            document.getElementById("stop_min").innerText = min;
+            document.getElementById("stop_sec").innerText = sec;
+            document.getElementById("stop_millisec").innerText = millisec;
+        }, 1);
+        startState = 1;
     }
-
-    timeStart = setInterval(function () {
-        let currentTime = new Date(Date.now() - startTime);
-
-        min = addZero(currentTime.getMinutes());
-        sec = addZero(currentTime.getSeconds());
-        millisec = addZero(Math.floor(currentTime.getMilliseconds() / 10));
-
-        document.getElementById("stop_min").innerText = min;
-        document.getElementById("stop_sec").innerText = sec;
-        document.getElementById("stop_millisec").innerText = millisec;
-    }, 1);
-
-    startFlag = 1;
+    stopState = 0;
+    stopBtn.innerText = "일시정지";
+    clearState = 0;
 })
 
-stopBtn.addEventListener("click", function () {
-    if (timeStart) {
-        clearInterval(timeStart);
-        stopTime = Date.now();
+let stopState = stopBtn.addEventListener("click", function () {
+    if (stopState !== 1) {
+        if (timeStart) {
+            clearInterval(timeStart);
+            stopTime = Date.now();
+        }
+        startBtn.innerText = "재시작";
+        stopState = 1;
     }
-    startBtn.innerText = "재시작";
+    startState = 0;
+    clearState = 1;
 })
 
-clearBtn.addEventListener("click", function () {
 
-    document.getElementById("stop_min").innerText = "00";
-    document.getElementById("stop_sec").innerText = "00";
-    document.getElementById("stop_millisec").innerText = "00";
+let clearState = clearBtn.addEventListener("click", function () {
+    if (clearState === 1) {
 
-    startBtn.innerText = "시작";
+        document.getElementById("stop_min").innerText = "00";
+        document.getElementById("stop_sec").innerText = "00";
+        document.getElementById("stop_millisec").innerText = "00";
 
-    startTime = 0;
-    stopTime = 0;
-    min = 0;
-    sec = 0;
-    millisec = 0;    
+        startBtn.innerText = "시작";
+        stopBtn.innerText = "일시정지";
+
+        startTime = 0;
+        stopTime = 0;
+        min = 0;
+        sec = 0;
+        millisec = 0;
+    }
 })
 
 function addZero(input) {

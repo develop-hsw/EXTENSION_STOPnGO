@@ -23,32 +23,32 @@
 
 <body>
   <nav class="navbar navbar-default">
-    <div class="container" style="text-align: center; font-size: 50px; background-color: green; color: white;">
+    <div class="container" style="text-align: center; font-size: 50px; background-color: black; color: white;">
       STOP n GO
     </div>
   </nav>
 
   <div class="container">
     <div class="js-current">
-      <h1 id="current" style="text-align: center;">00:00</h1>
+      <h1 id="current" style="text-align: center; font-size:50px;">00:00</h1>
     </div><br><hr>
 
     <div class="js-stopwatch">
-      <h1 id="stop" style="text-align: center;">stopwatch<br>
+      <div class="container" id="stop" style="text-align: center; font-size: 80px;">
         <span id="stop_min">00</span>
         <span>:</span>
         <span id="stop_sec">00</span>
-        <span>:</span>
+        <span>.</span>
         <span id="stop_millisec">00</span>
-      </h1>
+      </div>
       <br>
-      <div class="container">
+      <div class="container" style="width:100%; margin-left:500px;">
         <button id="startButton" type="button" class="btn btn-primary">시작</button>
         <button id="pauseButton" type="button" class="btn btn-primary">일시정지</button>
         <button id="clearButton" type="button" class="btn btn-primary">초기화</button>
       </div>
     </div>
-
+  </div>
 
   <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -61,7 +61,7 @@
 </body>
 
 <footer>
-  <div class="container;" style="text-align: center; margin-top: 100px;">dev by <a href="https://www.youtube.com/channel/UCk6miCfR64GkRqVFR8BCFXA?view_as=subscriber">hsw</a></div>
-</footer>
+  <div class="container;" style="text-align: center; margin-top: 50px;">dev by hsw</div>
+  <div class="container;" style="text-align: center;"><a href="https://github.com/develop-hsw/EXTENSION_STOPnGO">github</a> | <a href="https://www.youtube.com/channel/UCk6miCfR64GkRqVFR8BCFXA?view_as=subscriber">youtube</a></div>
 
 </html>
