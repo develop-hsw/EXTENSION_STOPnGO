@@ -1,2 +1,2 @@
-# EXTENSION_STOP-GO-
-브라우저 스탑워치 확장앱입니다.
+# EXTENSION_STOPnGO
+브라우저 확장앱 "STOP n GO" 입니다.
